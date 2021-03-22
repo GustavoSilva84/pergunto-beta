@@ -18,9 +18,6 @@ app.use(express.static('public'));
 //Rotas 
 app.use('/', require('./routes'));
 
-
-
-
 const porta = 8282;
 
 app.listen(process.env.PORT || porta, (erro) => {

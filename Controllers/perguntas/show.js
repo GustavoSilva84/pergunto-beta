@@ -4,6 +4,7 @@ const chalk = require('chalk')
 
 const tbPergunta = require('../../Models/tabelaPerguntas');
 const tbMateria = require('../../Models/tabelaMateria');
+const tbRespostas = require('../../Models/tabelaRespostas');
 
 router.get('/materia/:urlMateria/id/:urlIdMateria/pagina/:urlPagina', (req, res) => {
 
@@ -45,7 +46,7 @@ function buscarBD(req, res, urlMateria, urlIdMateria, urlPagina) {
         }
 
         tbPergunta.findAndCountAll({
-            limit: 10, offset: aparti, where: {materiumId: urlIdMateria}, order: [ ['id','DESC'] ]
+            limit: 10, offset: aparti, where: {materiumId: urlIdMateria}, order: [ ['id','DESC'] ], include: [{model: tbRespostas}]
         }).then((dadosArtigos) => {
 
             if(dadosArtigos == null) {
