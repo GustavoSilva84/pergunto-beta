@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const tbPergunta = require('../../Models/tabelaPerguntas');
 const tbMateria = require('../../Models/tabelaMateria');
 const tbRespostas = require('../../Models/tabelaRespostas');
+const { default: slugify } = require('slugify');
 
 router.get('/materia/:urlMateria/id/:urlIdMateria/pagina/:urlPagina', (req, res) => {
 
@@ -37,7 +38,7 @@ function validarDados(req, res, urlMateria, urlIdMateria, urlPagina) {
 
 function buscarBD(req, res, urlMateria, urlIdMateria, urlPagina) {
 
-    let aparti = (urlPagina * 10);
+    let aparti = (urlPagina * 10) 
 
     tbMateria.findOne({ where: {id: urlIdMateria, urlMateria: urlMateria} }).then((dadosMateria) => {
 
