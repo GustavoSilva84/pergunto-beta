@@ -46,7 +46,7 @@ function buscarBD(req, res, urlMateria, urlIdMateria, urlPagina) {
         }
 
         tbPergunta.findAndCountAll({
-            limit: 10, offset: aparti, where: {materiumId: urlIdMateria}, order: [ ['id','DESC'] ], include: [{model: tbRespostas}]
+            limit: 10, offset: aparti, where: {materiumId: urlIdMateria}, order: [ ['id','DESC'] ]
         }).then((dadosArtigos) => {
 
             if(dadosArtigos == null) {
