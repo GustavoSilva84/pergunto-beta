@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Home </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/erro.css">
+
+    <link rel="shortcut icon" href="/imgs/entrevista.png"/>
+</head>
+<body>
+
+    <div class="container"> 
+        <div class="card card-mostrar-mensagem-de-erro">
+            
+            <div class="card-header">
+                <h1> <%- titulo %> </h1>
+            </div>
+
+            <div class="card-body">
+
+                <p> <%- mensagem %> </p>
+                
+                <button onclick="voltar()" class="btn"> <%- button_de_voltar %> </button>
+
+            </div>
+
+
+        </div> 
+    </div>
+
+    
+    <script>
+
+        function voltar() {
+            window.history.back()
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>

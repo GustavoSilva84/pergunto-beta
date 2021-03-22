@@ -1,0 +1,47 @@
+body {
+    background: rgb(255, 171, 171);
+}
+
+.container {
+    max-width: 700px;
+}
+
+/* card de erro */
+
+.card-mostrar-mensagem-de-erro {
+    margin-top: 15px;
+    border: none;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.522);
+}
+
+    /* cabeçalho */
+
+    .card-mostrar-mensagem-de-erro .card-header {
+        background: rgb(255, 0, 0);
+        text-align: center;
+        border: none;
+    }
+
+    .card-mostrar-mensagem-de-erro .card-header > h1 {
+        color: white;
+        margin: 0;
+    }
+
+    /* fim do cabeçalho */
+
+    /* corpo */
+
+    .card-mostrar-mensagem-de-erro .card-body {
+        border: none;
+    }
+
+    .card-mostrar-mensagem-de-erro .card-body  > button {
+        background: rgb(255, 0, 0);
+        margin-right: 10px;
+        border-radius: none;
+        color: white;
+    }
+
+    /* fim do corpo */
+
+/* fiim de card de erro */

@@ -1,0 +1,8 @@
+body {
+    background: rgb(211, 211, 211);
+}
+
+:root {
+    --background-header-e-button: rgb(94, 0, 225);
+    --font-color-header-e-button: rgb(255, 255, 255);
+}

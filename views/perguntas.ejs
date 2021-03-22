@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/perguntas.css">
+    <link rel="stylesheet" href="/css/barra_de_navegacao.css">
+    <link rel="stylesheet" href="/css/variaveis.css">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <link rel="shortcut icon" href="/imgs/entrevista.png"/>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="card card_fazer_pergunta">
+            <form method="POST" action="/new/pergunta" onSubmit="enviarPergunta(event, this)">
+            
+                <div class="card-header">
+                    <h1> Faça sua pergunta </h1>
+                </div>
+
+                <div class="card-body">
+
+                    <input required maxlength="45" autocomplete="off" name="titulo" type="text" class="form-control mb-3" id="titulo" placeholder="Titulo da pergunta">
+                    
+                    <textarea id="mensagem" required maxlength="20000" name="corpo" class="form-control mb-3" rows="5" placeholder="Descreva sua pergunta"></textarea>
+                    
+                    <input type="hidden" value="<%- urlMateria %>" name="urlMateria">
+                    <input type="hidden" value="<%- urlId %>" name="urlIdMateria">
+
+                    <div class="g-recaptcha" data-sitekey="6Lc68n4aAAAAAED7hJsTOywJkJt0Nr5UP5BQzezP"></div> <br>
+        
+                    <button class="btn" typt="submit"> Enviar </button>
+                
+                </div>
+
+            </form>
+        </div>
+
+        <% dados.forEach(dados => { %>
+                
+            <div class="card card_perguntas">
+
+                <div class="card-header">
+                    <h1> <%- dados.titulo %> </h1>
+                </div>
+
+                <div class="card-body">
+                    <p > <%- dados.corpo %> </p>
+                    <a class="btn" href="/materia/<%- dados.urlMateria %>/id/<%- urlId %>/pergunta/<%- dados.urlTitulo %>/id/<%- dados.id %>/pagina/0" > Responder </a>
+                </div> 
+            
+            </div>
+
+        <% }) %>
+
+
+    </div>
+
+    <!-- dadosMateria -->
+
+    <div style="display: flex; justify-content:center;">
+        <% if(proximo) { %> 
+            <a href="/materia/<%- urlMateria %>/id/<%- urlId %>/pagina/<%- urlPagina + 1 %>"> Proximo </a>
+        <% } %>
+    </div>
+    
+    <br><br><br>
+    <div class="fundo_de_buttons_de_navegacao">
+        <a href="/" class="btn"> Voltar para pagina principal </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+    <script>
+
+        function enviarPergunta(event, formulario) {
+
+            event.preventDefault();
+
+            let titulo = document.querySelector('#titulo');
+            let mensagem = document.querySelector('#mensagem');
+            let captcha = grecaptcha.getResponse();
+
+            if(titulo.value.trim() === '' && mensagem.value.trim() === '') {
+                return alert('Titilo e Mensagem não preenchido');
+            }
+
+            if(titulo.value.trim() === '') {
+                return alert('Titulo não preenchido');
+            }
+
+            if(mensagem.value.trim() === '') {
+                return alert('Mensagem não preenchido');
+            }
+
+            if(captcha.length == 0) {
+                return alert('O captcha não foi marcado');
+            }
+
+            formulario.submit();
+
+        }
+
+    </script>
+
+
+</body>
+</html>

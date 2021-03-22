@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="/css/barra_de_navegacao.css">
+    <link rel="stylesheet" href="/css/variaveis.css">
+    <link rel="stylesheet" href="/css/deletarMateria.css">
+    
+    <link rel="shortcut icon" href="/imgs/entrevista.png"/>
+</head>
+
+<style>
+
+    .btn-danger {
+        font-size: 0.70em;
+    }
+
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+
+
+
+
+            
+            <div class="col-sm">
+                <form method="POST" action="/admin/new/materia">
+        
+                    <div class="card card_criar_materia">
+
+                        <div class="card-header">
+                            <h1> Adicionar materia </h1>
+                        </div>
+
+                        <div class="card-body">
+            
+                            <div class="mb-3">
+                                <select required name="titulo" class="form-select form-select-sm">
+                                    <option value="Matemática"> Matemática </option>
+                                    <option value="Português"> Português </option>
+                                    <option value="Ingles"> Ingles </option>
+                                    <option value="História"> História </option>
+                                    <option value="Geografia"> Geografia </option>
+                                </select>
+                            </div>
+                
+                            <div class="mb-3">
+                                <textarea required maxlength="70" name="corpo" class="form-control" rows="3" placeholder="Descrição"></textarea>
+                            </div>
+                
+                            <button type="submit" class="btn"> Enviar </button>
+                
+                        </div>
+                    </div>
+            
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-sm">
+                <form method="POST" action="/admin/new/admin">
+
+                    <div class="card card-cadastrar-usuario">
+        
+                        <div class="card-header">
+                             <h1> Adicionar administrador </h1>
+                        </div>
+        
+                        <div class="card-body">
+        
+                            <div class="mb-3">
+                                <input maxlength="15" autocomplete="off" name="nome" type="text" class="form-control" id="titulo" placeholder="Nome">
+                            </div>
+            
+                            <div class="mb-3">
+                                <input maxlength="15" max="200" autocomplete="off" name="senha" class="form-control" id="exampleFormControlTextarea1" placeholder="Senha">
+                            </div>
+        
+                            
+                            <button typt="submit" class="btn btn-primary"> Enviar </button>
+                        
+                        </div>
+        
+                    </div>
+        
+                </form>
+            </div>
+    
+        </div>
+
+            <div class="card fundo-card-cadastrar-usuario">
+
+                <div class="card-header">
+                     <h1> Usuarios </h1>
+                </div>
+
+                <div class="card-body">
+
+                    <% if(mostrar == true) { %>
+                    <% dados.forEach(dados => { %>
+
+                        <form action="/admin/deletar/admin" method="post">
+
+                            <div class="card card-mostrar-usuario">
+
+                                <div class="card-header">
+
+                                    <h1> <%- dados.nome %> </h1>
+
+                                </div>
+            
+                                <div class="card-body">
+            
+                                    <div class="mb-3">
+                                        <p> <%- dados.senha %> </p>
+    
+                                    
+                                        <input type="hidden" name="id" value="<%- dados.id %>">
+                                    
+
+
+                                    <button type="submit" class="btn"> Deletar usuario </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+            
+                    <% }) %>
+
+                    <% } else { %>
+
+                        <form action="/admin/deletar/admin" method="post">
+
+                            <div class="card card-mostrar-usuario">
+
+                                <div class="card-header">
+
+                                    <h1> <%- nome %> </h1>
+
+                                </div>
+            
+                                <div class="card-body">
+                                
+                                    <div class="mb-3">
+                                        <p> <%- senha %> </p>
+    
+                                        <button type="submit" class="btn"> Deletar usuario </button>
+    
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    <% } %>
+                
+                </div>
+
+            </div>
+
+        
+            <div class="card cardDeletarMateria">
+
+                <div class="card-header">
+                    <h1> Deletar materia </h1>
+                </div>
+
+                <div class="card-body">
+                    
+                    <form action="/deletemateria" method="POST" >
+
+                        <div class="mb-3">
+
+                            <select name="materia" class="form-select form-select-sm">
+                                <option value="Matemática"> Matemática </option>
+                                <option value="Português"> Português </option>
+                                <option value="Ingles"> Ingles </option>
+                                <option value="História"> História </option>
+                                <option value="Geografia"> Geografia </option>
+                            </select>
+
+                            <button class="btn" type="submit"> Deletar </button>
+                            
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+    </div>
+
+
+
+
+    <br><br>
+
+    <div class="fundo_de_buttons_de_navegacao">
+        <a href="/" class="btn"> Voltar para pagina principal </a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* barra de navegação */
+
+.fundo_de_buttons_de_navegacao {
+    position: fixed;
+    z-index: 1; 
+    bottom: 0px; 
+    width: 100%;
+}
+
+.fundo_de_buttons_de_navegacao > a {
+    width: 100%; 
+    border-radius: 0px;
+    background: rgb(85, 1, 202);
+    color: white;
+
+    border: none;
+    box-shadow: none;
+}
+
+.fundo_de_buttons_de_navegacao > a:hover {
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.fundo_de_buttons_de_navegacao > a:focus {
+    border: none;
+    box-shadow: none;
+}
+
+/* fim barra de navegação */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fundo_de_buttons_de_navegacao {
+    position: fixed;
+    z-index: 1; 
+    bottom: 0px; 
+    width: 100%;
+}
+
+.fundo_de_buttons_de_navegacao > button {
+    width: 100%; 
+    border-radius: 0px;
+    background: rgb(85, 1, 202);
+    color: white;
+
+    border: none;
+    box-shadow: none;
+}
+
+.fundo_de_buttons_de_navegacao > button:hover {
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.fundo_de_buttons_de_navegacao > button:focus {
+    border: none;
+    box-shadow: none;
+}

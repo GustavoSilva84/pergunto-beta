@@ -1,0 +1,57 @@
+/* card mostrar materia */
+
+    .container {
+        max-width: 700px;
+    }
+    .card_mostrar_materias {
+        margin: 30px 0 10px 0;
+        border: none;
+    } 
+
+    /* cabeçalho */
+    
+    .card_mostrar_materias .card-header {
+        background: var(--background-header-e-button);
+        text-align: center;
+        margin: 0;
+    }
+    
+    .card_mostrar_materias .card-header > h1 {
+        color: var(--font-color-header-e-button);
+        margin: 0;
+    }
+
+    /* fim cabeçalho */
+
+    /* corpo */
+
+    .card_mostrar_materias .card-body {
+        padding: 5px 20px 15px 20px;
+    }
+
+    .card_mostrar_materias .card-body > p {
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    .card_mostrar_materias .card-body > a {
+        width: 100%;
+        background: var(--background-header-e-button);
+        color: var(--font-color-header-e-button);
+
+        border: none;
+        box-shadow: none;
+    }
+
+    .card_mostrar_materias .card-body > a:focus {
+        width: 100%;
+        background: var(--background-header-e-button);
+        color: var(--font-color-header-e-button);
+
+        border: none;
+        box-shadow: none
+    }
+
+    /* fim corpo */
+
+/* fim card mostrar materia */

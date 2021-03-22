@@ -1,0 +1,44 @@
+/* card adicionar adm */
+
+.cardDeletarMateria {
+    margin: 15px 0 15px 0;
+}
+
+/* cabeçalho */
+
+.cardDeletarMateria .card-header {
+    background: var(--background-header-e-button);
+    text-align: center;
+}
+
+.cardDeletarMateria .card-header > h1 {
+    color: var(--font-color-header-e-button);
+    margin: 0;
+    font-size: 1.20em;
+}
+
+/* fim cabeçalho */
+
+/* corpo */
+
+.cardDeletarMateria .card-body .mb-3 > input:focus {
+    box-shadow: none;
+    border-color: var(--background-header-e-button);
+}
+
+.cardDeletarMateria .card-body .mb-3 > button {
+    margin: 40px 0 0 0;
+    background: var(--background-header-e-button);
+    text-align: center;
+    width: 100%;
+    color: var(--font-color-header-e-button);
+    box-shadow: none;
+}
+
+.cardDeletarMateria .card-body .mb-3 > button:focus {
+    box-shadow: none;
+}
+
+/* fim corpo */
+
+/* fim card  */

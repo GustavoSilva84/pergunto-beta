@@ -1,0 +1,178 @@
+.container {
+    max-width: 900px;
+}
+
+/* card criar materia */
+
+    .card_criar_materia {
+        margin-top: 15px;
+    }
+
+    /* cabecalho */
+
+    .card_criar_materia .card-header {
+        background: var(--background-header-e-button);
+        text-align: center;
+    }
+
+    .card_criar_materia .card-header > h1 {
+        margin: 0;
+        color: var(--font-color-header-e-button);
+        font-size: 1.20em;
+    }
+
+    /* fim cabecalho */
+
+    /* corpo */
+
+    .card_criar_materia .card-body {
+
+    }
+
+    .card_criar_materia .card-body .mb-3 select {
+        box-shadow: none;
+    }
+
+    .card_criar_materia .card-body .mb-3 select:focus {
+        box-shadow: none;
+        border-color: var(--background-header-e-button);
+    }
+
+    .card_criar_materia .card-body .mb-3 > textarea:focus {
+        box-shadow: none;
+        border-color: var(--background-header-e-button);
+    }
+
+    .card_criar_materia .card-body > button{
+        background: var(--background-header-e-button);
+        text-align: center;
+        width: 100%;
+        color: var(--font-color-header-e-button);
+    }
+    
+    .card_criar_materia .card-body > button:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    
+    /* fim corpo */
+
+/* fim card criar materia */
+
+
+/* card adicionar adm */
+
+    .card-cadastrar-usuario {
+        margin: 15px 0 15px 0;
+    }
+
+    /* cabeçalho */
+
+    .card-cadastrar-usuario .card-header {
+        background: var(--background-header-e-button);
+        text-align: center;
+    }
+
+    .card-cadastrar-usuario .card-header > h1 {
+        color: var(--font-color-header-e-button);
+        margin: 0;
+        font-size: 1.20em;
+    }
+
+    /* fim cabeçalho */
+
+    /* corpo */
+
+    .card-cadastrar-usuario .card-body .mb-3 > input:focus {
+        box-shadow: none;
+        border-color: var(--background-header-e-button);
+    }
+
+    .card-cadastrar-usuario .card-body > button {
+        margin: 40px 0 0 0;
+        background: var(--background-header-e-button);
+        text-align: center;
+        width: 100%;
+        color: var(--font-color-header-e-button);
+        box-shadow: none;
+    }
+
+    .card-cadastrar-usuario .card-body > button:focus {
+        box-shadow: none;
+    }
+    
+    .fundo_de_buttons_de_navegacao {
+        position:fixed; 
+        bottom: 0px; 
+        z-index: 1; 
+        width: 100%;
+    }
+
+    /* fim corpo */
+
+/* fim card  */
+
+
+
+/* card mostrar adms */
+
+    /* cabeçalho */
+
+    .fundo-card-cadastrar-usuario {
+
+        overflow-x: scroll;
+        height: 320px;
+
+    }
+
+    .fundo-card-cadastrar-usuario .card-header {
+
+        background: var(--background-header-e-button);
+        color: var(--font-color-header-e-button);
+        margin: 0;
+        font-size: 1.20em;
+
+    }
+
+    .fundo-card-cadastrar-usuario .card-header > h1 {
+
+        margin: 0;
+        font-size: 1.20em;
+        text-align: center;
+
+    }
+
+    .card-mostrar-usuario {
+        margin: 15px 0 0 0;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.329);
+        scroll-behavior: smooth;
+    }
+
+    /* fim cabeçalho */
+
+    /* corpo */
+
+    .card-mostrar-usuario .card-body {
+        
+    }
+
+    .card-mostrar-usuario .card-body .mb-3 {
+        margin: 0;
+    }
+
+    .card-mostrar-usuario .card-body .mb-3  > p {
+        margin: 0;
+    }
+
+    .card-mostrar-usuario .card-body .mb-3 > button {
+        margin: 40px 0 0 0;
+        background: var(--background-header-e-button);
+        text-align: center;
+        width: 100%;
+        color: var(--font-color-header-e-button);
+        box-shadow: none;
+    }
+
+    /* fim corpo */
+
+/* fim card mostrar adms */
