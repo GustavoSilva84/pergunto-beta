@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const tbPergunta = require('../../Models/tabelaPerguntas');
 const tbMateria = require('../../Models/tabelaMateria');
 const tbRespostas = require('../../Models/tabelaRespostas');
-const { default: slugify } = require('slugify');
+const slugify = require('slugify');
 
 router.get('/materia/:urlMateria/id/:urlIdMateria/pagina/:urlPagina', (req, res) => {
 
@@ -47,7 +47,7 @@ function buscarBD(req, res, urlMateria, urlIdMateria, urlPagina) {
         }
 
         tbPergunta.findAndCountAll({
-            limit: 10, offset: aparti, where: {materiumId: urlIdMateria}, order: [ ['id','DESC'] ]
+            limit: 10, offset: aparti, where: {materiumId: urlIdMateria}, order: [ ['id','DESC'] ], include: [{model: tbRespostas, limit: 100}]
         }).then((dadosArtigos) => {
 
             if(dadosArtigos == null) {
@@ -65,6 +65,9 @@ function buscarBD(req, res, urlMateria, urlIdMateria, urlPagina) {
 function mostrarDados(req, res, urlMateria, urlIdMateria, urlPagina, aparti, dadosMateria, dadosArtigos) {
 
     let proximo;
+
+    console.log(chalk.green(`\n\n\n\nDados perguntas\n\n${JSON.stringify(dadosArtigos)}`))
+    console.log(chalk.green(`\n\n ${dadosArtigos.count}`))
 
     if(aparti + 10 >= dadosArtigos.count) {
         proximo = false;
