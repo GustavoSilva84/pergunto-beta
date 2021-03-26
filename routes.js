@@ -42,4 +42,10 @@ app.use('/', controladorRespostas);
 const deleteMateria = require('./Controllers/deleteMateria/delete');
 app.use('/', deleteMateria);
 
+const showAdmin = require('./Controllers/admin/show');
+app.use('/', showAdmin);
+
+const deslogarAdmin = require('./Controllers/login/sair');
+app.use('/', deslogarAdmin);
+
 module.exports = app;
