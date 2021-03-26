@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const tbLogin = require('../../Models/tabelaLogin');
+const bcryptjs = require('bcryptjs');
+const chalk = require('chalk');
 
-router.post('/admin', (req, res) => {
+router.post('/logar', (req, res) => {
 
     var nome = checarComandos(req.body.nome);
     var senha = checarComandos(req.body.senha);
@@ -21,66 +23,53 @@ function validarInformacoes(req, res, nome, senha) {
         return res.redirect('/login');
     }
 
-    tbLogin.findAll().then((dadosLogin) => {
+    tbLogin.findOne().then((dados) => {
 
-        if(Object.keys(dadosLogin).length == 0) {
+        if(!dados) {
 
             if(nome == 'admin' && senha == 'admin') {
 
-                usuarioExistente(req, res, nome, senha, dadosLogin);
+                req.session.usuario = {
+                    nome: 'admin',
+                    id: 'admin'
+                }
+
+                return res.redirect('/admin');
 
             }else {
-
-                res.redirect('/login');
-
+                return res.redirect('/login');
             }
 
         }else {
 
-            tbLogin.findAll({ where: {nome, senha} }).then((dadosLogin) => {
+            tbLogin.findOne({ where: { nome: nome } }).then((dados) => {
 
-                if(Object.keys(dadosLogin).length != 0) {
+                if(dados) {
 
-                    usuarioExistente(req, res, nome, senha, dadosLogin);
+                    if(bcryptjs.compareSync(senha, dados.senha)) {
 
-                } else {
+                        req.session.usuario = {
+                            nome: nome,
+                            id: dados.id
+                        }
 
-                    res.redirect('/login');
+                        return res.redirect('/admin');
 
+                    }else {
+                        return res.redirect('/login');
+                    }
+                    
+                }else {
+                    return res.redirect('/login');
                 }
 
-            })
-            
+            });
+
         }
 
     });
 
 }
-
-function usuarioExistente(req, res, nome, senha, dadosLogin) {
-
-    tbLogin.findAll().then((dadosLogin) => {
-
-        if(Object.keys(dadosLogin).length == 0) {
-
-            res.render('admin', {
-                nome: 'admin', 
-                senha: 'admin',
-                mostrar: false
-            });
-
-        } else {
-
-            res.render('admin', {
-                dados: dadosLogin,
-                mostrar: true
-            });
-
-        }
-
-    });
-
-};
 
 function checarComandos(x){
     return x.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");

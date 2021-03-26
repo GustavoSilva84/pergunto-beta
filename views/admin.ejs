@@ -25,20 +25,19 @@
 <body>
 
     <div class="container">
+
         <div class="row">
 
+            <!-- DESLOGAR -->
+            <a href="/deslogar"> Deslogar </a>
 
-
-
-            
+            <!-- CRIAR MATERIA -->
             <div class="col-sm">
                 <form method="POST" action="/admin/new/materia">
         
                     <div class="card card_criar_materia">
 
-                        <div class="card-header">
-                            <h1> Adicionar materia </h1>
-                        </div>
+                        <div class="card-header"> <h1> Adicionar materia </h1> </div>
 
                         <div class="card-body">
             
@@ -59,43 +58,28 @@
                             <button type="submit" class="btn"> Enviar </button>
                 
                         </div>
+
                     </div>
             
                 </form>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <!-- CRIAR NOVO USUARIO -->
             <div class="col-sm">
                 <form method="POST" action="/admin/new/admin">
 
                     <div class="card card-cadastrar-usuario">
         
-                        <div class="card-header">
-                             <h1> Adicionar administrador </h1>
-                        </div>
+                        <div class="card-header"> <h1> Adicionar administrador </h1> </div>
         
                         <div class="card-body">
         
                             <div class="mb-3">
-                                <input maxlength="15" autocomplete="off" name="nome" type="text" class="form-control" id="titulo" placeholder="Nome">
+                                <input maxlength="15" autocomplete="off" name="nome" type="text" class="form-control" placeholder="Nome">
                             </div>
             
                             <div class="mb-3">
-                                <input maxlength="15" max="200" autocomplete="off" name="senha" class="form-control" id="exampleFormControlTextarea1" placeholder="Senha">
+                                <input maxlength="15" autocomplete="off" name="senha" type="text" class="form-control" placeholder="Senha">
                             </div>
         
                             
@@ -108,119 +92,102 @@
                 </form>
             </div>
     
-        </div>
+        </div>  
 
-            <div class="card fundo-card-cadastrar-usuario">
+        <!-- MOSTRAR USUARIOS -->
+        <div class="card fundo-card-cadastrar-usuario">
 
-                <div class="card-header">
-                     <h1> Usuarios </h1>
-                </div>
+            <div class="card-header"> <h1> Usuarios </h1> </div>
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <% if(mostrar == true) { %>
+                <% if(mostrar == true) { %>
                     <% dados.forEach(dados => { %>
 
                         <form action="/admin/deletar/admin" method="post">
 
                             <div class="card card-mostrar-usuario">
 
-                                <div class="card-header">
-
-                                    <h1> <%- dados.nome %> </h1>
-
+                                <div class="card-header"> 
+                                    <h1> <%- dados.nome %> </h1> 
                                 </div>
             
                                 <div class="card-body">
             
                                     <div class="mb-3">
-                                        <p> <%- dados.senha %> </p>
-    
-                                    
+                                        <p> ******* </p>
                                         <input type="hidden" name="id" value="<%- dados.id %>">
-                                    
-
-
-                                    <button type="submit" class="btn"> Deletar usuario </button>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </form>
-            
-                    <% }) %>
-
-                    <% } else { %>
-
-                        <form action="/admin/deletar/admin" method="post">
-
-                            <div class="card card-mostrar-usuario">
-
-                                <div class="card-header">
-
-                                    <h1> <%- nome %> </h1>
-
-                                </div>
-            
-                                <div class="card-body">
-                                
-                                    <div class="mb-3">
-                                        <p> <%- senha %> </p>
-    
                                         <button type="submit" class="btn"> Deletar usuario </button>
-    
                                     </div>
+
                                 </div>
 
                             </div>
 
                         </form>
-
-                    <% } %>
-                
-                </div>
-
-            </div>
-
         
-            <div class="card cardDeletarMateria">
+                    <% }) %>
+                <% } else { %>
 
-                <div class="card-header">
-                    <h1> Deletar materia </h1>
-                </div>
+                    <form action="/admin/deletar/admin" method="post">
 
-                <div class="card-body">
-                    
-                    <form action="/deletemateria" method="POST" >
+                        <div class="card card-mostrar-usuario">
 
-                        <div class="mb-3">
-
-                            <select name="materia" class="form-select form-select-sm">
-                                <option value="Matemática"> Matemática </option>
-                                <option value="Português"> Português </option>
-                                <option value="Ingles"> Ingles </option>
-                                <option value="História"> História </option>
-                                <option value="Geografia"> Geografia </option>
-                            </select>
-
-                            <button class="btn" type="submit"> Deletar </button>
+                            <div class="card-header">
+                                <h1> <%- nome %> </h1>
+                            </div>
+        
+                            <div class="card-body">
                             
+                                <div class="mb-3">
+                                    <p> <%- senha %> </p>
+                                    <button type="submit" class="btn"> Deletar usuario </button>
+                                </div>
+                                
+                            </div>
+
                         </div>
 
                     </form>
 
-                </div>
+                <% } %>
+            
+            </div>
+
+        </div>
+
+        <!-- DELETAR MATERIAS -->
+        <div class="card cardDeletarMateria">
+
+            <div class="card-header">
+                <h1> Deletar materia </h1>
+            </div>
+
+            <div class="card-body">
+                
+                <form action="/deletemateria" method="POST" >
+
+                    <div class="mb-3">
+
+                        <select name="materia" class="form-select form-select-sm">
+                            <option value="Matemática"> Matemática </option>
+                            <option value="Português"> Português </option>
+                            <option value="Ingles"> Ingles </option>
+                            <option value="História"> História </option>
+                            <option value="Geografia"> Geografia </option>
+                        </select>
+
+                        <button class="btn" type="submit"> Deletar </button>
+                        
+                    </div>
+
+                </form>
 
             </div>
 
+        </div>
 
     </div>
-
-
-
 
     <br><br>
 
@@ -229,8 +196,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>

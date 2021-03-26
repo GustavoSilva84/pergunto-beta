@@ -44,7 +44,7 @@ function gravarMateria(req, res, titulo, urlMateria, corpo)  {
         corpo: corpo[0].toUpperCase() + corpo.substr(1),
         urlMateria: urlMateria
     }).then(() => {
-        res.redirect('/')
+        res.redirect('/admin');
     });
 
 }

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const tabelaLogin = require('../../Models/tabelaLogin')
+const tabelaLogin = require('../../Models/tabelaLogin');
+const autenticar = require('../login/autenticar')
 
-router.post('/admin/deletar/admin', (req, res) => {
+router.post('/admin/deletar/admin', autenticar, (req, res) => {
 
     var id = req.body.id;
 
@@ -31,7 +32,7 @@ function validarDados(req, res, id) {
 function deletarUsuario(req, res, id) {
 
     tabelaLogin.destroy({ where: {id: id} }).then(() => {
-        res.redirect('/login');
+        res.redirect('/admin');
     });
 
 }

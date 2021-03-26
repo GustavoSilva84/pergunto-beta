@@ -1,8 +1,10 @@
 const tabelaLogin = require('../../Models/tabelaLogin');
 const express = require('express');
 const router = express.Router();
+const bcryptjs = require('bcryptjs');
+const autenticar = require('../login/autenticar')
 
-router.post('/admin/new/admin', (req, res) => {
+router.post('/admin/new/admin', autenticar, (req, res) => {
 
     var nome = checarComandos(req.body.nome);
     var senha = checarComandos(req.body.senha);
@@ -21,7 +23,7 @@ function validarDados(req, res, nome, senha) {
         res.redirect('/login');
     }
 
-    tabelaLogin.findAll({ where: {nome: nome, senha: senha} }).then((dados) => {
+    tabelaLogin.findAll({ where: {nome: nome} }).then((dados) => {
 
         if(Object.keys(dados).length != 0) {
             return res.redirect('/login');
@@ -35,11 +37,14 @@ function validarDados(req, res, nome, senha) {
 
 function gravarAdmin(req, res, nome, senha) {
 
+    let salt = bcryptjs.genSaltSync(10);
+    let senhaHash = bcryptjs.hashSync(senha, salt);
+
     tabelaLogin.create({
         nome: nome,
-        senha: senha
+        senha: senhaHash
     }).then(() => {
-        res.redirect('/login');
+        res.redirect('/admin');
     });
 
 }

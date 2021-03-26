@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const chalk = require('chalk');
 const slugify = require('slugify');
+const autenticar = require('../login/autenticar')
 
 const tbMateria = require('../../Models/tabelaMateria');
 const tbPerguntas = require('../../Models/tabelaPerguntas');
 const tbRespostas = require('../../Models/tabelaRespostas');
 
-router.post('/deletemateria', (req, res) => {
+router.post('/deletemateria', autenticar, (req, res) => {
 
     let urlMateria = checarComandos(slugify(req.body.materia));
 
@@ -35,7 +36,7 @@ function deletarMateria(req, res, urlMateria) {
         tbPerguntas.destroy({ where: {urlMateria: urlMateria} }).then(() => {
             tbRespostas.destroy({ where: {urlMateria: urlMateria} }).then(() => {
 
-                res.redirect('/');
+                res.redirect('/admin');
 
             });
         });
