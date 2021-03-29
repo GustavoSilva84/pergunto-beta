@@ -73,7 +73,7 @@
         <% } %>
     </div>
     
-    <br><br><br>
+    <br>br
     <div class="fundo_de_buttons_de_navegacao">
         <a href="/" class="btn"> Voltar para pagina principal </a>
     </div>
@@ -110,8 +110,39 @@
 
         }
 
-    </script>
+        let cardPerguntas = document.querySelectorAll('.card_perguntas .card-body > p');
 
+        function verMais(textoGrande, textoPequeno, i) {
+
+            cardPerguntas[i].innerHTML = `
+                ${textoGrande}
+                <a onclick="verMenos('${textoGrande}', '${textoPequeno}', ${i})"> ver menos... </a>
+            `
+
+        }
+
+        function verMenos(textoGrande, textoPequeno, i) {
+
+            cardPerguntas[i].innerHTML = `
+                ${textoPequeno}
+                <a onclick="verMais('${textoGrande}', '${textoPequeno}', ${i})"> ver menos... </a>
+            `
+
+        }
+
+        cardPerguntas.forEach((element, i) => {
+
+            if(element.innerText.length > 600) {
+
+                cardPerguntas[i].innerHTML = `
+                    ${element.innerText.substring(0,600)}
+                    <a onclick="verMais('${element.innerText}', '${element.innerText.substring(0,600)}', ${i})"> ver mais... </a>
+                `
+            }
+
+        })
+
+    </script>
 
 </body>
 </html>

@@ -102,6 +102,69 @@
 
         }
 
+
+        let cardResponder = document.querySelector('.card-responder-pergunta .card-body > p');
+
+        function verMais(textoGrande, textoPequeno,) {
+
+            cardResponder.innerHTML = `
+                ${textoGrande}
+                <a onclick="verMenos('${textoGrande}', '${textoPequeno}')"> ver menos... </a>
+            `
+
+        }
+
+        function verMenos(textoGrande, textoPequeno) {
+
+            cardResponder.innerHTML = `
+                ${textoPequeno}
+                <a onclick="verMais('${textoGrande}', '${textoPequeno}')"> ver menos... </a>
+            `
+
+        }
+
+        if(cardResponder.innerText.length > 600) {
+
+            cardResponder.innerHTML = `
+                ${cardResponder.innerText.substring(0, 600)}
+                <a onclick="verMais('${cardResponder.innerText}', '${cardResponder.innerText.substring(0,600)}')"> ver mais... </a>
+            `
+        }
+
+
+        let cardRespostas = document.querySelectorAll('.card-mostrar-pergunta .card-body > p');
+
+        function verMais(textoGrande, textoPequeno, i) {
+
+            cardRespostas[i].innerHTML = `
+                ${textoGrande}
+                <a onclick="verMenos('${textoGrande}', '${textoPequeno}', ${i})"> ver menos... </a>
+            `
+
+        }
+
+        function verMenos(textoGrande, textoPequeno, i) {
+
+            cardRespostas[i].innerHTML = `
+                ${textoPequeno}
+                <a onclick="verMais('${textoGrande}', '${textoPequeno}', ${i})"> ver menos... </a>
+            `
+
+        }
+
+        cardRespostas.forEach((element, i) => {
+
+            if(element.innerText.length > 600) {
+
+                cardRespostas[i].innerHTML = `
+                    ${element.innerText.substring(0,600)}
+                    <a onclick="verMais('${element.innerText}', '${element.innerText.substring(0,600)}', ${i})"> ver mais... </a>
+                `
+            }
+
+        })
+            
+
 </script>
 
     </script>

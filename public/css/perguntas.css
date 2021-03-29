@@ -181,6 +181,15 @@
         margin: 10px 0;
     }
 
+    .card_perguntas .card-body > p > a {
+        color: rgb(94, 0, 225);
+        cursor: pointer;
+    }
+
+    .card_perguntas .card-body > p > a:hover {
+        color: rgb(94, 0, 225);
+    }
+
     .card_perguntas .card-body > a {
         background: var(--background-header-e-button);
         width: 100%;
